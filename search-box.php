@@ -43,6 +43,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>First Name</th>
+                                    <th>Last Name</th>
                                     <th>Email</th>
                                 </tr>
                             </thead>
@@ -52,7 +53,7 @@
 
                                 if (isset($_GET['search'])) {
                                     $filtervalues = '%' . $_GET['search'] . '%';
-                                    $select_query = "SELECT id, first_name, email FROM users WHERE CONCAT(first_name, email) LIKE '$filtervalues'";
+                                    $select_query = "SELECT id, first_name, last_name, email FROM users WHERE CONCAT(first_name, last_name, email) LIKE '$filtervalues'";
                                     $excecute = mysqli_query($dbcon, $select_query);
 
                                     if ($excecute && mysqli_num_rows($excecute) > 0) {
@@ -60,8 +61,10 @@
                                             echo "<tr>";
                                             echo "<td>{$row['id']}</td>";
                                             echo "<td>{$row['first_name']}</td>";
+                                            echo "<td>{$row['last_name']}</td>";
                                             echo "<td>{$row['email']}</td>";
                                             echo "</tr>";
+                                            var_dump($row);
                                         }
                                     } else {
                                         echo "<tr><td colspan='3'>No Record Found</td></tr>";
