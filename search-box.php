@@ -42,8 +42,7 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
+                                    <th>Full Name</th>
                                     <th>Email</th>
                                 </tr>
                             </thead>
@@ -53,15 +52,14 @@
 
                                 if (isset($_GET['search'])) {
                                     $filtervalues = '%' . $_GET['search'] . '%';
-                                    $select_query = "SELECT id, first_name, last_name, email FROM users WHERE CONCAT(first_name, last_name, email) LIKE '$filtervalues'";
+                                    $select_query = "SELECT id, CONCAT(first_name,' ' ,last_name) AS full_name , email FROM users WHERE CONCAT(first_name, last_name, email) LIKE '$filtervalues'";
                                     $excecute = mysqli_query($dbcon, $select_query);
 
                                     if ($excecute && mysqli_num_rows($excecute) > 0) {
                                         while ($row = mysqli_fetch_assoc($excecute)) {
                                             echo "<tr>";
                                             echo "<td>{$row['id']}</td>";
-                                            echo "<td>{$row['first_name']}</td>";
-                                            echo "<td>{$row['last_name']}</td>";
+                                            echo "<td>{$row['full_name']}</td>";
                                             echo "<td>{$row['email']}</td>";
                                             echo "</tr>";
                                             var_dump($row);
