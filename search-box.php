@@ -35,6 +35,34 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-md-12">
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <table class="table table-bordered ">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>email</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <?php
+                                require("./mysqli_connect.php");
+                                
+                                ?>
+
+                                <tr>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
